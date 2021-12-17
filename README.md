@@ -1,9 +1,9 @@
-## Discord Observer
+# Discord Observer
 
 This is a bot that, after a specific amount of days, sends a message, that the user has been on the guild for that specific amount of days.
 This can come in handy, if you have a guest role, and after for example two weeks the user can be promoted to a member.
 
-# config.py - Configuring the bot
+## config.py - Configuring the bot
 
 You can change how long a user needs to be on the guild.
 
