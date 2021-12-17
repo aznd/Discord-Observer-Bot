@@ -1,0 +1,3 @@
+DAYS = 0
+ROLES_TO_LOOK_FOR = []
+ROLES_TO_GIVE = []
