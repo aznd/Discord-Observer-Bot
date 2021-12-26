@@ -1,12 +1,30 @@
-import discord
+# import discord
 from discord.ext import commands, tasks
 import config
 
 TOKEN = ''
+client = commands.Bot(command_prefix="-")
 
-@tasks.loop()
-async def inform(days=config.DAYS):
-    pass
-    member: discord.Member = discord.utils.get()
-    for role in config.ROLES_TO_LOOK_FOR:
-        await member.add_roles(config.ROLES_TO_LOOK_FOR)
+# Convert days to hours cause we can only use hours.
+hours = config.DAYS * 24
+
+'''
+@tasks.loop(hours=hours)
+async def inform(ctx):
+    days = config.DAYS
+    all_members_in_guild = ctx.guild.members
+    for member in all_members_in_guild:
+        roles_of_member = member.roles
+        for role in roles_of_member:
+            await ctx.send("Roles of {}: {}".format(member, role))
+'''
+
+@client.command()
+async def send(ctx):
+    all_members_in_guild = ctx.guild.members
+    for member in all_members_in_guild:
+        roles_of_member = member.roles
+        for role in roles_of_member:
+            await ctx.send("Roles of {}: {}".format(member, role))
+
+client.run(TOKEN)
