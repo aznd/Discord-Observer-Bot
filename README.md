@@ -17,9 +17,5 @@ You can change for which roles the bot should look out, so for example it should
 
 You can do that with the ROLES_TO_LOOK_OUT variable.
 
-You can change which roles the user should receive after the user has been on the guild for the days specified.
-
-You can do that with the ROLES_TO_GIVE variable.
-
 TODO:
 - [ ] Add possibility of choosing days, hours, minutes, seconds.

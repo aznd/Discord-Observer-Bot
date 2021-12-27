@@ -1,3 +1,2 @@
 DAYS = 14
-ROLES_TO_LOOK_FOR = []
-ROLES_TO_GIVE = []
+ROLES_TO_LOOK_FOR = ['test']
