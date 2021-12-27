@@ -11,7 +11,7 @@ If you still have problems with getting the ID, open an issue.
 You can change how long a user needs to be on the guild.
 
 You can do that with the DAYS variable. (Note that this needs to be an INT, e.g. 5, no such numbers like 5.5)
-If you still such a number, the bot will round the number.
+If you still use such a number, the bot will round the number.
 
 You can change for which roles the bot should look out, so for example it should only look for users with the guest role, not for users that are already a member.
 

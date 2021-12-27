@@ -10,7 +10,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 client = commands.Bot(command_prefix="-")
 
 # Convert days to hours cause we can only use hours.
-hours = config.DAYS * 24
+hours = int(config.DAYS) * 24
 
 
 @tasks.loop(hours=hours)
