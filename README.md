@@ -5,11 +5,14 @@ This can come in handy, if you have a guest role, and after for example two week
 
 ## Running the bot
 
-I recommend using repl.it. It's a free way to host your server. Using the keep_alive.py file included in this repo, the bot will also stay online, as long as you use something like uptimerobot.com/, to automatically ping the webserver.
+I recommend using repl.it. It's a free way to host your server. Using the keep_alive.py file included in this repo, the bot will also stay online.as long as you use something like uptimerobot.com/, to automatically ping the webserver.
+
+To do that, all you have to do to run the bot.py file, and then a small window will pop up. In there, there should be an URL bar. Copy that link and go to https://uptimerobot.com.
 
 ## config.py - Configuring the bot
 
 For now, this bot will use the exact role name. In the future, you will probably be able to use ID's.
+
 ~~NOTE: This bot uses ID's, for accurate results. If you dont know how to get the ID of a role, watch this youtube video: https://www.youtube.com/watch?v=OS2rp7wHVTI (Not by me.)
 If you still have problems with getting the ID, open an issue.~~
 
