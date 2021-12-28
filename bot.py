@@ -5,20 +5,22 @@ import os
 import datetime
 import logging
 from dotenv import load_dotenv
+from keep_alive import keep_alive
 load_dotenv()
+keep_alive()
 TOKEN = os.getenv("DISCORD_TOKEN")
 
 client = commands.Bot(command_prefix="-")
 
 # Convert days to hours cause we can only use hours.
-hours = int(config.DAYS) * 24
+# hours = int(config.DAYS) * 24
 
 level = logging.INFO
 fmt = '[%levelname)s] %(asctime)s - %(message)s'
 logging.basicConfig(level=level, format=fmt)
 
 
-@tasks.loop(minutes=1)
+@tasks.loop(hours=24)
 async def inform(ctx):
     all_members_in_guild = ctx.guild.members
     for member in all_members_in_guild:
@@ -28,7 +30,7 @@ async def inform(ctx):
                 first_time = datetime.datetime.now()
                 joined_time = member.joined_at
                 diff = first_time - joined_time
-                channel: discord.TextChannel = client.get_channel(924811417809481761)
+                channel: discord.TextChannel = client.get_channel(925051225714597999)
                 await channel.send(f"INFO: (Guest) {member.name} has now been on the server for {str(diff.days)} days")
                 if str(diff.days) >= str(config.DAYS):
                     await channel.send(f"IMPORTANT: Guest {member.name} has now been on the server for {str(diff.days)} days.")
@@ -37,7 +39,7 @@ async def inform(ctx):
 
 @client.command()
 async def start(ctx):
-    ctx.send("Task starting...")
+    await ctx.send("Task starting...")
     inform.start(ctx)
 
 @client.event
