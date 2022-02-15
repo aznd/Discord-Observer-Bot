@@ -23,6 +23,7 @@ level = logging.WARNING
 fmt = '[%(levelname)s] %(asctime)s - %(message)s'
 logging.basicConfig(level=level, format=fmt)
 
+
 @tasks.loop(hours=24)
 async def inform(ctx):
     members = await ctx.guild.fetch_members().flatten()
@@ -33,17 +34,20 @@ async def inform(ctx):
                 first_time = datetime.datetime.now()
                 joined_time = member.joined_at
                 diff = first_time - joined_time
-                channel: discord.TextChannel = client.get_channel(id=config.CHANNEL_ID)
+                channel: discord.TextChannel = client.get_channel(
+                    id=config.CHANNEL_ID)
                 if diff.days <= 30:
                     await channel.send(f"INFO: {member.name} has now been on the server for {str(diff.days)} days")
                 if diff.days >= config.DAYS:
                     if diff.days <= 30:
                         await channel.send(f"IMPORTANT: {member.name} has now been on the server for {str(diff.days)} days.")
 
+
 @client.command()
 async def start(ctx):
     await ctx.send("Task starting...")
     inform.start(ctx)
+
 
 @client.command()
 @commands.has_permissions(manage_messages=True)
@@ -52,7 +56,7 @@ async def clear(ctx, number):
     channel = ctx.message.channel
     messages = await channel.history(limit=int(number)).flatten()
     await channel.delete_messages(messages)
-    
+
 
 @client.event
 async def on_ready():
