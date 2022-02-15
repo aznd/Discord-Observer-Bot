@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands, tasks
-from discord.utils import async_all
 import config
 import os
 import datetime
@@ -14,7 +13,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 intents = discord.Intents.default()
 intents.members = True
 
-client = commands.Bot(command_prefix=".", intents=intents)
+client = commands.Bot(command_prefix="_", intents=intents)
 
 # Convert days to hours cause we can only use hours.
 # hours = int(config.DAYS) * 24
@@ -26,6 +25,7 @@ logging.basicConfig(level=level, format=fmt)
 
 @tasks.loop(hours=24)
 async def inform(ctx):
+    print("Yes.")
     members = await ctx.guild.fetch_members().flatten()
     for member in members:
         roles_of_member = member.roles
@@ -40,7 +40,7 @@ async def inform(ctx):
                     await channel.send(f"INFO: {member.name} has now been on the server for {str(diff.days)} days")
                 if diff.days >= config.DAYS:
                     if diff.days <= 30:
-                        await channel.send(f"IMPORTANT: {member.name} has now been on the server for {str(diff.days)} days.")
+                        await channel.send(f"@here IMPORTANT: {member.name} has now been on the server for {str(diff.days)} days.")
 
 
 @client.command()
@@ -60,6 +60,6 @@ async def clear(ctx, number):
 
 @client.event
 async def on_ready():
-    logging.info("Bot starting...")
+    print("Bot is ready.")
 
 client.run(TOKEN)
